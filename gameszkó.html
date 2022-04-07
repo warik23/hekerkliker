@@ -1,0 +1,176 @@
+<html>
+
+<head>
+    <title>Hacker Clicker</title>
+    <link rel="stylesheet" href="igen.css">
+</head>
+
+<body>
+
+    <h1>Hacker Clicker [BETA]</h1>
+    <p class="center">Lopott anyag: <span id="pont">0</span></p>
+    <div>
+        <img src="https://haszon.hu/media-library/kapucnis-hacker-ul-a-gepe-elott-es-probalja-meghackelni-egy-masik-hacker-rendszeret.jpg?id=29587447&width=1200&quality=85&coordinates=8%2C0%2C8%2C0&height=800" onclick="ponthozadas(1)" class="center keprekatt">
+        <h2>Katt a képre</h2>
+    </div>
+
+    <button class="pedding center" onclick="BonuszTablazat()">Bónusz táblázat</button>
+    <div>
+        <div class="hatter" id="bonusztablazat" style="display: none;">
+            <p class="center">Kattintó hekk száma: <span id="KattintHekkDB">0</span> [Ez <span id="KattHekkErtek">0</span>
+                kattintás másodpercenként!]</p>
+
+            <p class="center">Etikus hekker száma: <span id="EtikusHekkerDB">0</span> [Ez <span
+                    id="EtikusHekkerErtek">0</span> kattintás másodpercenként!]</p>
+
+            <p class="center">Haladó hekker száma: <span id="HaladoHekkerDB">0</span> [Ez <span
+                    id="HaladoHekkerErtek">0</span> kattintás másodpercenként!]</p>
+
+            <p class="center">Összesen <span id="osszesertek">0</span> kattintás másodpercenként! </p>
+        </div>
+    </div>    
+    <button class="center" onclick="Bolt()">Bolt</button>
+
+    <div class="hatter" id="bolt" style="display: none;">
+        <div class="pedding">
+            <button onclick="KattintHekk()">Kattintó hekk - Ára: <span id="KattintHekkAr">15</span> lopott
+                anyag</button></button>
+        </div>
+
+        <div>
+            <img src="https://thumbs.dreamstime.com/b/mouse-cursor-line-icon-black-background-flat-style-vector-illustration-170441853.jpg"
+                width="50" height="50" alt="">
+        </div>
+        <div class="pedding">
+            <button onclick="EtikusHekker()">Etikus hekker - Ára: <span id="EtikusHekkerAr">100</span> lopott anyag
+            </button></button>
+        </div>
+
+        <div>
+            <img src="https://d6scj24zvfbbo.cloudfront.net/7255b1ff15aefc7ca744ae1e11d9188f/200000009-9ef3c9ef3e/hack.jpeg?ph=1b036605e8"
+                width="50" height="50" alt="">
+        </div>
+
+        <div class="pedding">
+            <button onclick="HaladoHekker()">Haladó hekker - Ára: <span id="HaladoHekkerAr">1000</span> lopott anyag
+            </button></button>
+        </div>
+
+        <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKHAwnEvXjW6dY_XhJnHU1LZPtVQ-yxkB7eQ&usqp=CAU"
+                width="50" height="50" alt="">
+        </div>
+
+    </div>
+    <h1>Copyright By: Nándor</h1>
+    <h2>Az oldal fejlesztés alatt !</h2>
+
+    <script>
+        function Bolt() {
+            var x = document.getElementById("bolt");
+            if (x.style.display == "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+
+        function BonuszTablazat() {
+            var x = document.getElementById("bonusztablazat"); 
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        var pont = 0;
+
+        var KattintHekkAr = 15;
+        var KattintHekkDB = 0;
+
+        var EtikusHekkerAr = 100;
+        var EtikusHekkerDB = 0;
+
+        var HaladoHekkerAr = 1000;
+        var HaladoHekkerDB = 0;
+
+        var KattHekkErtek = 0;
+        var EtikusHekkerErtek = 0;
+        var HaladoHekkerErtek = 0;
+
+        var osszertek = 0;
+
+        function KattintHekk() {
+            if (pont < KattintHekkAr) {
+                alert("Nincs elég lopott anyagod!");
+            }
+            if (pont >= KattintHekkAr) {
+                pont = pont - KattintHekkAr;
+                KattintHekkDB = KattintHekkDB + 1;
+                KattHekkErtek = KattHekkErtek + 1;
+                KattintHekkAr = Math.round(KattintHekkAr * 1.25);
+                osszertek = osszertek + 1;
+
+                document.getElementById("KattHekkErtek").innerHTML = KattHekkErtek;
+                document.getElementById("pont").innerHTML = pont;
+                document.getElementById("KattintHekkAr").innerHTML = KattintHekkAr;
+                document.getElementById("KattintHekkDB").innerHTML = KattintHekkDB;
+                document.getElementById("osszesertek").innerHTML = osszertek;
+            }
+        }
+        function EtikusHekker() {
+            if (pont < EtikusHekkerAr) {
+                alert("Nincs elég lopott anyagod!");
+            }
+            if (pont >= EtikusHekkerAr) {
+                pont = pont - EtikusHekkerAr;
+                EtikusHekkerDB = EtikusHekkerDB + 1;
+                EtikusHekkerErtek = EtikusHekkerErtek + 5;
+                EtikusHekkerAr = Math.round(EtikusHekkerAr * 1.25)
+                osszertek = osszertek + 5;
+
+
+                document.getElementById("EtikusHekkerErtek").innerHTML = EtikusHekkerErtek;
+                document.getElementById("pont").innerHTML = pont;
+                document.getElementById("EtikusHekkerAr").innerHTML = EtikusHekkerAr;
+                document.getElementById("EtikusHekkerDB").innerHTML = EtikusHekkerDB;
+                document.getElementById("osszesertek").innerHTML = osszertek;
+            }
+        }
+
+        function HaladoHekker() {
+            if (pont < HaladoHekkerAr) {
+                alert("Nincs elég lopott anyagod!");
+            }
+            if (pont >= HaladoHekkerAr) {
+                pont = pont - HaladoHekkerAr;
+                HaladoHekkerDB = HaladoHekkerDB + 1;
+                HaladoHekkerErtek = HaladoHekkerErtek + 20;
+                HaladoHekkerAr = Math.round(HaladoHekkerAr * 1.25)
+                osszertek = osszertek + 20;
+
+
+                document.getElementById("HaladoHekkerErtek").innerHTML = HaladoHekkerErtek;
+                document.getElementById("pont").innerHTML = pont;
+                document.getElementById("HaladoHekkerAr").innerHTML = HaladoHekkerAr;
+                document.getElementById("HaladoHekkerDB").innerHTML = HaladoHekkerDB;
+                document.getElementById("osszesertek").innerHTML = osszertek;
+            }
+        }
+        function ponthozadas(mennyiseg) {
+            pont = pont + mennyiseg;
+            document.getElementById("pont").innerHTML = pont;
+        }
+
+        setInterval(function () {
+            pont = pont + KattintHekkDB;
+            pont = pont + EtikusHekkerDB * 5;
+            pont = pont + HaladoHekkerDB * 20;
+            document.getElementById("pont").innerHTML = pont;
+        }, 1000);
+
+    </script>
+</body>
+
+</html>
